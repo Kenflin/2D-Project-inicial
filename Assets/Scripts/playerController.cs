@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -39,6 +41,16 @@ public class playerController : MonoBehaviour
         AnimatedPlayer();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch(collision.tag)
+        {
+
+            case "Death":
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                break;
+        }
+    }
     private void AnimatedPlayer()
     {
         if (!OnGround()) animationPlayer.Play("Jump");
