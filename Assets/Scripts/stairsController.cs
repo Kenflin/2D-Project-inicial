@@ -7,7 +7,10 @@ public class stairsController : MonoBehaviour
 {
     public int stairRotationalOffset;
     public int stairDownRotationalOffset;
-    public bool exitPlatform;
+    public int surfaceArcDown;
+    public int surfaceArc;
+
+    private bool exitPlatform;
 
     private PlatformEffector2D stairPlatformEffector;
     // Start is called before the first frame update
@@ -21,14 +24,14 @@ public class stairsController : MonoBehaviour
     {
         if (Input.GetAxis("Vertical") < 0 && !exitPlatform)
         {
-            stairPlatformEffector.rotationalOffset = stairDownRotationalOffset;
+            stairPlatformEffector.surfaceArc = surfaceArcDown;
             exitPlatform = true;
         }
     }
     //TO DO:Improve movement between stairs 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        stairPlatformEffector.rotationalOffset = stairRotationalOffset;
+        stairPlatformEffector.surfaceArc = surfaceArc;
 
         exitPlatform = false;
     }

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
-    public int speed;
-    public int jumpHeight;
+    public float speed;
+    public float jumpHeight;
 
     private Rigidbody2D physics;
     private SpriteRenderer sprite;
@@ -51,6 +51,7 @@ public class playerController : MonoBehaviour
                 break;
         }
     }
+
     private void AnimatedPlayer()
     {
         if (!OnGround()) animationPlayer.Play("Jump");
@@ -69,6 +70,7 @@ public class playerController : MonoBehaviour
         {
             animationPlayer.SetBool("Grounded", false);
             return false;
+
         }
         else
         {
@@ -77,4 +79,6 @@ public class playerController : MonoBehaviour
         }
 
     }
+
+
 }
